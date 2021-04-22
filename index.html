@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube</title>
+    <style>
+         :root {
+            --color1: #FFFFFF;
+            --color2: #009C46;
+            --color3: #B80A31;
+            --color4: #0044AF;
+            --color5: #FF5700;
+            --color6: #FFD600;
+        }
+        
+        .colors h5 {
+            text-align: center;
+        }
+        
+        .colors {
+            margin: auto;
+            width: 455px;
+        }
+        
+        .main {
+            background-color: #fff5e3;
+            border-radius: 10px;
+            margin: 1em auto;
+            width: 782px;
+            height: 585px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        .face {
+            width: 195px;
+            height: 195px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        .empty {
+            border: 0;
+        }
+        
+        .piece {
+            width: 65px;
+            height: 65px;
+            border-radius: 10px;
+            background-color: blue;
+        }
+        
+        .color1 {
+            background-color: var(--color1);
+        }
+        
+        .color2 {
+            background-color: var(--color2);
+        }
+        
+        .color3 {
+            background-color: var(--color3);
+        }
+        
+        .color4 {
+            background-color: var(--color4);
+        }
+        
+        .color5 {
+            background-color: var(--color5);
+        }
+        
+        .color6 {
+            background-color: var(--color6);
+        }
+        
+        .buttonDiv {
+            text-align: center;
+        }
+        
+        #solution h2 {
+            text-align: center;
+        }
+        
+        #solution ol {
+            text-align: center;
+            list-style-position: inside;
+            font-family: monospace;
+            padding: 0;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        select {
+            width: 65px;
+            height: 65px;
+            border: solid #2e2e2e .5px;
+            border-radius: 10px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        
+        select::-ms-expand {
+            display: none;
+        }
+        
+        @media screen and (min-width:0\0) {
+            select {
+                background: none\9;
+                padding: 5px\9;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="colors">
+        <h5>Select your 6 colors:</h5>
+        <label for="color1">U:</label>
+        <input type="color" name="U" id="color1" value="#FFFFFF">
+        <label for="color2">L:</label>
+        <input type="color" name="L" id="color2" value="#009C46">
+        <label for="color3">F:</label>
+        <input type="color" name="F" id="color3" value="#B80A31">
+        <label for="color4">R:</label>
+        <input type="color" name="R" id="color4" value="#0044AF">
+        <label for="color5">B:</label>
+        <input type="color" name="B" id="color5" value="#FF5700">
+        <label for="color6">D:</label>
+        <input type="color" name="D" id="color6" value="#FFD600">
+    </div>
+    <div class="main">
+        <div class="face empty">
+        </div>
+        <div class="face" id="U">
+            <div class="piece">
+                <select id="U1">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="U2">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="U3">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="U4">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="U5">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="U6">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="U7">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="U8">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="U9">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+        </div>
+        <div class="face empty">
+        </div>
+        <div class="face empty">
+        </div>
+        <div class="face" id="L">
+            <div class="piece">
+                <select id="L1">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="L2">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="L3">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="L4">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="L5">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="L6">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="L7">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="L8">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="L9">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+        </div>
+        <div class="face" id="F">
+            <div class="piece">
+                <select id="F1">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="F2">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="F3">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="F4">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="F5">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="F6">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="F7">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="F8">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="F9">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+        </div>
+        <div class="face" id="R">
+            <div class="piece">
+                <select id="R1">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="R2">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="R3">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="R4">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="R5">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="R6">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="R7">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="R8">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="R9">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+        </div>
+        <div class="face" id="B">
+            <div class="piece">
+                <select id="B1">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="B2">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="B3">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="B4">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="B5">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="B6">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="B7">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="B8">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="B9">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+        </div>
+        <div class="face empty">
+        </div>
+        <div class="face" id="D">
+            <div class="piece">
+                <select id="D1">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="D2">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="D3">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="D4">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="D5">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="D6">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="D7">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="D8">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+            <div class="piece">
+                <select id="D9">
+                    <option value="" selected disabled hidden></option>
+                    <option class="color1" value="color1">U</option>
+                    <option class="color2" value="color2">L</option>
+                    <option class="color3" value="color3">F</option>
+                    <option class="color4" value="color4">R</option>
+                    <option class="color5" value="color5">B</option>
+                    <option class="color6" value="color6">D</option>
+                  </select>
+            </div>
+        </div>
+    </div>
+    <div class="buttonDiv">
+        <input type="button" id="solve" value="Solve">
+    </div>
+    <div id="solution" hidden>
+        <h2></h2>
+        <ol></ol>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="cube.js"></script>
+    <script src="solve.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -35,7 +35,7 @@ $("#solve").on("click", function() {
     }
     var cube = Cube.fromString(cubeString);
     console.log(cube.asString());
-    if (!cube.isSolved()) {
+    if (true || !cube.isSolved()) {
         Cube.initSolver();
         let solution = cube.solve();
         console.log(solution);
@@ -44,11 +44,20 @@ $("#solve").on("click", function() {
         let solutionArray = solution.split(" ")
         $("#solution ol").html("");
         solutionArray.forEach((move, i) => {
-            let item = (move.length < 3) ? move + new Array(4 - move.length).join('&nbsp;') : move;
-            item = (solutionArray.length > 9 && i < 9) ? new Array(2).join('&nbsp;') + item : item;
-            console.log((move.length < 3), item);
+            // let item = (move.length < 3) ? move + new Array(4 - move.length).join('&nbsp;') : move;
+            // item = (solutionArray.length > 9 && i < 9) ? new Array(2).join('&nbsp;') + item : item;
+            let times = 1;
+            let item = move;
+            if (move.length = 2 && move[1] !== "'" && !isNaN(move[1])) {
+                times = parseInt(move[1])
+                item = move[0];
+            } else if (move.length = 3 && move[2] !== "'" && !isNaN(move[2])) {
+                times = parseInt(move[2])
+                item = move[0] + move[1];
+            }
+            console.log(times, item);
             let html = $("#solution ol").html();
-            $("#solution ol").html(`${html} <li>${item}</li>`)
+            $("#solution ol").html(`${html} ${new Array(1+times).join("<li><img src='images/"+item+".png' alt='' srcset=''></li>")}`)
         });
     } else {
         $("#solution").removeAttr("hidden");

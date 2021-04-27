@@ -7,12 +7,12 @@
     <title>Rubik's Cube</title>
     <style>
          :root {
-            --color1: #FFFFFF;
-            --color2: #009C46;
-            --color3: #B80A31;
-            --color4: #0044AF;
-            --color5: #FF5700;
-            --color6: #FFD600;
+            --color1: #FFD600;
+            --color2: #B80A31;
+            --color3: #009C46;
+            --color4: #FF5700;
+            --color5: #0044AF;
+            --color6: #FFFFFF;
         }
         
         .colors h5 {
@@ -27,8 +27,9 @@
         .main {
             background-color: #fff5e3;
             border-radius: 10px;
+            padding: 10px;
             margin: 1em auto;
-            width: 782px;
+            width: 780px;
             height: 585px;
             display: flex;
             flex-direction: row;
@@ -88,11 +89,18 @@
         
         #solution ol {
             text-align: center;
-            list-style-position: inside;
+            /* list-style-position: inside; */
+            /* list-style-type: decimal; */
             font-family: monospace;
-            padding: 0;
+            /* padding: 0; */
             font-size: 1rem;
             font-weight: bold;
+        }
+        
+        #solution ol li {
+            float: left;
+            margin: 0 10px;
+            padding: 0 10px;
         }
         
         select {
@@ -123,17 +131,17 @@
     <div class="colors">
         <h5>Select your 6 colors:</h5>
         <label for="color1">U:</label>
-        <input type="color" name="U" id="color1" value="#FFFFFF">
+        <input type="color" name="U" id="color1" value="#FFD600">
         <label for="color2">L:</label>
-        <input type="color" name="L" id="color2" value="#009C46">
+        <input type="color" name="L" id="color2" value="#B80A31">
         <label for="color3">F:</label>
-        <input type="color" name="F" id="color3" value="#B80A31">
+        <input type="color" name="F" id="color3" value="#009C46">
         <label for="color4">R:</label>
-        <input type="color" name="R" id="color4" value="#0044AF">
+        <input type="color" name="R" id="color4" value="#FF5700">
         <label for="color5">B:</label>
-        <input type="color" name="B" id="color5" value="#FF5700">
+        <input type="color" name="B" id="color5" value="#0044AF">
         <label for="color6">D:</label>
-        <input type="color" name="D" id="color6" value="#FFD600">
+        <input type="color" name="D" id="color6" value="#FFFFFF">
     </div>
     <div class="main">
         <div class="face empty">
@@ -754,7 +762,7 @@
     <div class="buttonDiv">
         <input type="button" id="solve" value="Solve">
     </div>
-    <div id="solution" hidden>
+    <div id="solution">
         <h2></h2>
         <ol></ol>
     </div>

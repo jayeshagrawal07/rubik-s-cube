@@ -35,7 +35,7 @@ $("#solve").on("click", function() {
     }
     var cube = Cube.fromString(cubeString);
     console.log(cube.asString());
-    if (true || !cube.isSolved()) {
+    if (!cube.isSolved()) {
         Cube.initSolver();
         let solution = cube.solve();
         console.log(solution);
